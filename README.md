@@ -69,6 +69,7 @@ Uses DaisyUI modal for borrow:
   isOpen={!!selectedBook}
   onClose={() => setSelectedBook(null)}
 />
+```
 
 
 🙋 Author
