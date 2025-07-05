@@ -47,18 +47,22 @@ const AllBooks = () => {
     }
   
     return (
-        <div>
-            <h1>show all data</h1>
+        <div className="m-4 p-4">
+            <h1  className="text-2xl font-bold mb-4">show all Books</h1>
 
             <div className="overflow-x-auto">
   <table className="table">
     {/* head */}
     <thead>
       <tr>
-        <th></th>
-        <th>Name</th>
-        <th>Job</th>
-        <th>Favorite Color</th>
+      
+        <th>Title</th>
+        <th>Author</th>
+        <th>Genre</th>
+        <th>ISBN</th>
+        <th>Copies</th>
+        <th>Availability</th>
+        <th>Actions</th>
       </tr>
     </thead>
     <tbody>
@@ -68,12 +72,15 @@ const AllBooks = () => {
                     
 
                     <tr key={book._id}>
-                    <th>1</th>
                     <td>{book.title}</td>
                     <td>{book.author}</td>
+                    <td>{book.genre}</td>
+                    <td>{book.isbn}</td>
+                    <td>{book.copies}</td>
+                    <td>{book.available ? "Available" : "Not Available"}</td>
                     <td className="gap-4 flex">
                     <Button variant="outline"  onClick={() => handleDelete(book._id)}>Delete</Button>
-                    <Button variant="outline" onClick={() => navigate(`/editBook/${book._id}`)}>Edit</Button>
+                    <Button variant="outline" onClick={() => navigate(`/edit-book/${book._id}`)}>Edit</Button>
                     <Button variant="outline" onClick={() => navigate(`/books/${book._id}`)}>View Details</Button>
 
                     <button className="btn btn-sm btn-primary" onClick={() => setSelectedBook(book)}>

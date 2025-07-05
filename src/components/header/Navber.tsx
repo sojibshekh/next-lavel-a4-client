@@ -5,8 +5,8 @@ import { ModeToggle } from '../mode-toggle';
 
 const links= <>
 <li> <NavLink to="/">Home</NavLink> </li>
-<li> <NavLink to="/AllBooks" >All Book</NavLink> </li>
-<li> <NavLink to="/AddBook">Add Book</NavLink> </li>
+<li> <NavLink to="/books" >All Book</NavLink> </li>
+<li> <NavLink to="/create-book">Add Book</NavLink> </li>
 <li> <NavLink to="/borrow-summary">Borrow Summary</NavLink> </li>
 </>
 

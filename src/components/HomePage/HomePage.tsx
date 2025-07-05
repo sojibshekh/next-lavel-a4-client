@@ -4,7 +4,7 @@ import AllBooks from "../pages/AllBooks";
 const HomePage = () => {
     return (
         <div>
-            <h1 className="text-3xl font-bold mb-4">Welcome to the Library</h1>
+            <h1 className="text-3xl font-bold mb-4 m-4 p-4">Welcome to the Library</h1>
             <AllBooks />
            
         </div>

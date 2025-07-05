@@ -54,7 +54,7 @@ const EditBook = () => {
   if (isLoading) return <p>⏳ Loading book...</p>;
 
   return (
-    <div className="max-w-xl mx-auto mt-8">
+    <div className="max-w-xl mx-auto mt-8 p-4 m-4">
       <h2 className="text-xl font-bold mb-4">✏️ Edit Book</h2>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
         <input {...form.register("title")} placeholder="Title" className="w-full border p-2" />

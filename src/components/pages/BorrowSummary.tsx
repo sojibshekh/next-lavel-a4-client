@@ -10,7 +10,7 @@ const BorrowSummary = () => {
   if (isError) return <p>Error loading data</p>;
 
   return (
-    <div>
+    <div className="m- p-4">
       <h2 className="text-2xl font-bold my-4">Borrow Summary</h2>
 
       <table className="table w-full">
