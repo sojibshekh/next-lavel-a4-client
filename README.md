@@ -63,13 +63,7 @@ Using `createApi` from Redux Toolkit Query for:
 
 Uses DaisyUI modal for borrow:
 
-```tsx
-<BorrowModal
-  book={selectedBook}
-  isOpen={!!selectedBook}
-  onClose={() => setSelectedBook(null)}
-/>
-```
+
 
 
 🙋 Author
