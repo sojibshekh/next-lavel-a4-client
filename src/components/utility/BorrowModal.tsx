@@ -1,10 +1,12 @@
 import { useBorrowBookMutation } from "@/redux/api/baseApi";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
 
 const BorrowModal = ({ book, isOpen, onClose }: any) => {
   const [borrowBook, { isLoading }] = useBorrowBookMutation();
   const { register, handleSubmit, reset } = useForm();
+  const navigate = useNavigate();
 
   const onSubmit = async (data: any) => {
     const quantity = parseInt(data.quantity);
@@ -25,6 +27,7 @@ const BorrowModal = ({ book, isOpen, onClose }: any) => {
       toast.success("✅ Book borrowed successfully");
       reset();
       onClose(); // modal close
+      navigate("/borrow-summary"); 
     } catch (error) {
       toast.error("❌ Failed to borrow book");
       console.error(error);

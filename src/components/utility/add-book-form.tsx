@@ -16,6 +16,7 @@ import {
 import { Input } from "@/components/ui/input"
 import { useAddBookMutation } from "@/redux/api/baseApi";
 import { toast } from "react-toastify"; 
+import { useNavigate } from "react-router"
 
 
 const formSchema = z.object({
@@ -62,7 +63,7 @@ export function ProfileForm() {
       available: true,
     },
   });
-
+   const navigate = useNavigate();
   const [addBook, { isLoading }] = useAddBookMutation();
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
@@ -83,6 +84,7 @@ export function ProfileForm() {
     toast.success("Book added successfully!");
 
     form.reset();
+    navigate("/AllBooks"); 
 
   } catch (err) {
     console.error("Failed to add book", err);
