@@ -1,69 +1,76 @@
-# React + TypeScript + Vite
+# 📚 Library Management System API
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+A minimal and modern library management frontend application built with **React**, **Redux Toolkit Query**, and **TypeScript**. This app allows users to view, borrow, update, and manage books seamlessly with backend API integration.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🏗️Features
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- ✅ View all books with details
+- ✅ Add new books
+- ✅ Edit book information (title, author, copies, etc.)
+- ✅ Delete book with confirmation
+- ✅ Borrow book via modal form
+- ✅ Quantity & due date validation for borrow
+- ✅ Borrow summary using aggregation API
+- ✅ Success/error toasts using React Toastify
+- ✅ Fully responsive & minimal UI with DaisyUI + Tailwind CSS
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Tech Stack
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+
+| Technology        | Description                          |
+|-------------------|--------------------------------------|
+| React             | Frontend UI Framework                |
+| TypeScript        | Type-safe JavaScript                 |
+| Redux Toolkit     | State & API Management               |
+| RTK Query         | Efficient data fetching              |
+| React Hook Form   | Form handling and validation         |
+| React Router DOM  | Page Routing                         |
+| DaisyUI           | Tailwind-based UI Components         |
+| React Toastify    | Toast Notification                   |
+| Vercel            | Deployment                           |
+
+
+
+Using `createApi` from Redux Toolkit Query for:
+
+- `getBooks`
+- `addBook`
+- `deleteBook`
+- `updateBook`
+- `borrowBook`
+- `getBorrowSummary`
+
+---
+
+## 📘 Pages & Functionalities
+
+| Page             | Path                | Description                                   |
+|------------------|---------------------|-----------------------------------------------|
+| All Books        | `/`                 | Displays all available books with actions     |
+| Edit Book        | `/editBook/:id`     | Updates book info via PATCH                   |
+| Book Details     | `/books/:id`        | Shows single book details                     |
+| Borrow Summary   | `/borrow-summary`   | Shows total borrowed quantity per book        |
+
+---
+
+## 🧪 Sample Borrow Modal
+
+Uses DaisyUI modal for borrow:
+
+```tsx
+<BorrowModal
+  book={selectedBook}
+  isOpen={!!selectedBook}
+  onClose={() => setSelectedBook(null)}
+/>
+
+
+🙋 Author
+Sojib Sheikh
+🌐 sojibsheikh.com
