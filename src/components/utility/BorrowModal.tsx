@@ -8,6 +8,10 @@ const BorrowModal = ({ book, isOpen, onClose }: any) => {
   const { register, handleSubmit, reset } = useForm();
   const navigate = useNavigate();
 
+
+    const today = new Date().toISOString().split("T")[0];
+
+
   const onSubmit = async (data: any) => {
     const quantity = parseInt(data.quantity);
     if (quantity > book.copies) {
@@ -58,7 +62,7 @@ const BorrowModal = ({ book, isOpen, onClose }: any) => {
             <input
               type="date"
               {...register("dueDate", { required: true })}
-              className="input input-bordered w-full"
+              className="input input-bordered w-full"  min={today} 
             />
           </div>
 
