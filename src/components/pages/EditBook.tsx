@@ -27,6 +27,8 @@ const EditBook = () => {
   });
 
   
+
+  
   useEffect(() => {
     if (data?.data && id) {
       const book = data.data.find((b: any) => b._id === id);
@@ -36,13 +38,26 @@ const EditBook = () => {
     }
   }, [data, id]);
 
+
+  
+
+// const available = form.watch("available");
+
+const copies = form.watch("copies");
+
+useEffect(() => {
+  if (copies === 0) {
+    form.setValue("available", false); // auto uncheck
+  }
+  // copies > 0 -> user can manually check/uncheck
+}, [copies, form]);
+
+
+
+
  
   const onSubmit = async (values: any) => {
     try {
-      if (values.copies === 0) {
-        values.available = false;
-      }
-
       await updateBook({ id, updatedData: values }).unwrap();
       toast.success("✅ Book updated successfully!");
       navigate("/books"); 
