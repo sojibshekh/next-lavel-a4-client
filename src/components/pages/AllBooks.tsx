@@ -26,7 +26,8 @@ const AllBooks = () => {
     try {
       await deleteBook(id).unwrap();
       toast.success("✅ Book deleted successfully!");
-
+      
+       navigate("/books"); 
      
 
      

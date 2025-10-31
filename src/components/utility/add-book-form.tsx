@@ -21,28 +21,29 @@ import { useNavigate } from "react-router"
 
 const formSchema = z.object({
   title: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
-  }),
+  message: "Book title must be at least 2 characters.",
+}),
+
   author: z.string().min(2,{
     message: "Author name must be at least 2 characters.",
   }),
-  genre: z.enum([
-    "FICTION",
-    "NON_FICTION",
-    "SCIENCE",
-    "HISTORY",
-    "BIOGRAPHY",
-    "FANTASY"
-  ]),
+  genre: z.enum(
+  ["FICTION", "NON_FICTION", "SCIENCE", "HISTORY", "BIOGRAPHY", "FANTASY"],
+  {
+    required_error: "Genre is required."
+  }
+)
+,
   isbn: z.string().length(13, {
     message: "ISBN must be exactly 13 characters.",
   }),
   description: z.string().min(10, {
     message: "Description must be at least 10 characters.",
     }),
-  copies: z.number().min(1, {
+  copies: z.coerce.number().min(1, {
   message: "Copies must be at least 1.",
 }),
+
 
     available: z.boolean({
     message: "Available must be true or false.",
@@ -84,7 +85,7 @@ export function ProfileForm() {
     toast.success("Book added successfully!");
 
     form.reset();
-    navigate("/AllBooks"); 
+    navigate("/books"); 
 
   } catch (err) {
     console.error("Failed to add book", err);
@@ -135,8 +136,8 @@ export function ProfileForm() {
     <FormItem>
       <FormLabel>Genre</FormLabel>
       <FormControl>
-        <select {...field} className="w-full border px-2 py-1 rounded">
-          <option value="">Select Genre</option>
+        <select {...field} className="w-full border px-2 py-1 rounded" required>
+          <option value="" disabled>Select Genre</option>
           <option value="FICTION">Fiction</option>
           <option value="NON_FICTION">Non-fiction</option>
           <option value="SCIENCE">Science</option>
@@ -210,6 +211,7 @@ export function ProfileForm() {
               <FormLabel>Available</FormLabel>
               <FormControl>
                 <input className="mr-4" type="checkbox" checked={field.value} onChange={field.onChange} />
+
               </FormControl>
               <FormMessage />
             </FormItem>

@@ -45,7 +45,7 @@ const EditBook = () => {
 
       await updateBook({ id, updatedData: values }).unwrap();
       toast.success("✅ Book updated successfully!");
-      navigate("/AllBooks"); 
+      navigate("/books"); 
     } catch (error: any) {
       toast.error("❌ Book update failed: " + (error?.data?.message || "Unknown error"));
     }
